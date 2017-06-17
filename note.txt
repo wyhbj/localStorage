@@ -16,3 +16,45 @@
 	当操作本地存储的数据时在兄弟页面中触发。
 	手动删除的时候会在当前页面触发storage事件，别的操作都不会触发。
 	storage:修改本地存储就会触发。必须在服务器环境下才能使用
+	sessionStorage
+	关闭浏览器生命周期结束 
+	removeItem ： 删除
+	getItem: 获取
+	setItem:设置
+	clear:清空
+	不支持storage事件的
+DOM操作是比较消耗性能的。
+	模板引擎：为了快而生。比传统的字符串拼接还快（里面注入了算法）
+	第一步：
+		<script type="text/html" id="temp">
+	第二步:
+		在页面中写一个空的容器。 也要写id
+	第三步:
+		var html = template('temp', 数据);
+	第四步:
+		box.innerHTML = html;
+	<%=输入%>	
+	<%for(){%>
+	<%}%>
+	<%=title%>  {{title}}
+例子：
+	var obj = {
+		title:'“活跃”的同学名单',
+		list:['王镇','王皓','王建鹏','高老板','孙原原']
+	}
+	
+	var box = document.getElementById('box');
+	var html = template('temp', obj);
+	box.innerHTML = html;
+	<script type="text/html" id="temp">
+	<h2><%=title%></h2>
+	<ul>
+		<%for(var i=0;i<list.length;i++){%>
+			<%if(list[i] == '王皓'){%>
+				<li style="background:red;"><%=list[i]%></li>
+			<%}else{%>
+				<li><%=list[i]%></li>
+			<%}%>
+		<%}%>
+	</ul>
+	</script>
